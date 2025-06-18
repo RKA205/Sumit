@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sumit Maurya - Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #000000, #001f1f);
+      font-family: 'Segoe UI', sans-serif;
+      color: #ccc;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: #000;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 0 10px #00ffcc;
+    }
+
+    .logo {
+      color: #00ffcc;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .menu-toggle {
+      font-size: 1.5em;
+      color: white;
+      display: none;
+      cursor: pointer;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        background: #000;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        display: none;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    .glow-box {
+      margin: 40px auto;
+      padding: 20px;
+      max-width: 850px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      box-shadow: 0 0 25px #00ffcc;
+    }
+
+    #slideshow {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 5px solid #00ffcc;
+      box-shadow: 0 0 20px #00ffcc;
+    }
+
+    .about-type {
+      font-size: 1.1em;
+      color: #cccccc;
+      margin-top: 10px;
+      min-height: 80px;
+    }
+
+    .skills-container, .projects-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .skill-card, .project-card {
+      background: #001f1f;
+      color: #00ffcc;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      width: 160px;
+      box-shadow: 0 0 15px #00ffcc;
+      transition: transform 0.3s ease;
+    }
+
+    .skill-card:hover, .project-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff;
+    }
+
+    .timeline-container {
+      position: relative;
+      margin: 50px 0;
+      padding: 10px;
+    }
+
+    .timeline-line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #00ffcc;
+      transform: translateY(-50%);
+    }
+
+    .timeline-event {
+      position: relative;
+      display: inline-block;
+      width: calc(100% / 6);
+      text-align: center;
+      color: white;
+    }
+
+    .timeline-event .dot {
+      width: 14px;
+      height: 14px;
+      background: #00ffcc;
+      border-radius: 50%;
+      margin: auto;
+      margin-bottom: 5px;
+      box-shadow: 0 0 10px #00ffcc;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #000;
+      color: #00ffcc;
+      font-size: 1em;
+      border-top: 2px solid #00ffcc;
+      box-shadow: 0 -5px 10px #00ffcc;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Sumit Maurya</div>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <nav id="nav">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+  </nav>
+</header>
+
+<!-- About -->
+<section id="about" class="glow-box" data-aos="fade-up">
+  <h2 style="color:red;">About Me</h2>
+  <div style="text-align:center">
+    <img id="slideshow" src="sumit1.png" alt="Sumit Maurya">
+    <h3 style="color:#00ffcc">Sumit Maurya</h3>
+    <div class="about-type" id="typewriter"></div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section id="skills" class="glow-box" data-aos="fade-right">
+  <h2 style="color:#00ffcc;">💡 Skills</h2>
+  <div class="skills-container">
+    <div class="skill-card" data-aos="fade-up">HTML</div>
+    <div class="skill-card" data-aos="fade-up" data-aos-delay="100">CSS</div>
+    <div class="skill-card" data-aos="fade-up" data-aos-delay="200">JavaScript</div>
+    <div class="skill-card" data-aos="fade-up" data-aos-delay="300">Git</div>
+    <div class="skill-card" data-aos="fade-up" data-aos-delay="400">Bootstrap</div>
+    <div class="skill-card" data-aos="fade-up" data-aos-delay="500">Python</div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" class="glow-box" data-aos="fade-left">
+  <h2 style="color:#00ffcc;">💼 Projects</h2>
+  <div class="projects-container">
+    <div class="project-card" data-aos="zoom-in">My School Website</div>
+    <div class="project-card" data-aos="zoom-in" data-aos-delay="100">YouTube Clone (HTML/CSS)</div>
+    <div class="project-card" data-aos="zoom-in" data-aos-delay="200">Typing Game (JS)</div>
+    <div class="project-card" data-aos="zoom-in" data-aos-delay="300">Login Page (CSS Effects)</div>
+  </div>
+</section>
+
+<!-- Education Timeline -->
+<section id="education" class="glow-box" data-aos="fade-up">
+  <h2 style="color:#00ffcc;">📚 Education Timeline</h2>
+  <div class="timeline-container">
+    <div class="timeline-line"></div>
+    <div class="timeline-event" data-aos="fade-up">
+      <div class="dot"></div>
+      <p>LKG<br>Govt School<br>Shiddi Kala</p>
+    </div>
+    <div class="timeline-event" data-aos="fade-up" data-aos-delay="100">
+      <div class="dot"></div>
+      <p>UKG<br>Tirupati Balaji<br>Hinduyari</p>
+    </div>
+    <div class="timeline-event" data-aos="fade-up" data-aos-delay="200">
+      <div class="dot"></div>
+      <p>Class 1<br>Shree Academy<br>Robertsganj</p>
+    </div>
+    <div class="timeline-event" data-aos="fade-up" data-aos-delay="300">
+      <div class="dot"></div>
+      <p>Class 4-8<br>Raghu Kul Academy</p>
+    </div>
+  </div>
+</section>
+<!-- Contact & Support -->
+<section id="contact" class="glow-box" data-aos="fade-up">
+  <h2 style="color:#00ffcc;">📞 Contact & Support</h2>
+  <p style="color: #fff;">
+    🙏 I'm Sumit Maurya, a passionate student & web developer from Raghu Kul Academy. I'm building websites using just my skills and borrowed devices because I don't own a laptop or personal phone.
+  </p>
+  <p style="color: #ff5050; font-weight: bold;">
+    😢 My family is financially struggling. We can't afford school fees or even basic tech. If you wish to support or get a website made by me, please connect.
+  </p>
+
+  <ul style="list-style: none; padding-left: 0;">
+    <li style="margin-bottom: 10px;">📧 Gmail: <a href="mailto:thecodeerror12@gmail.com" style="color:#00ffcc;">thecodeerror12@gmail.com</a></li>
+    <li>📞 Phone (for support & work): <a href="tel:+91 8853857578" style="color:#00ffcc;">Click to Call</a> (This is a shared number)</li>
+  </ul>
+
+  <form action="https://formsubmit.co/thecodeerror12@gmail.com" method="POST" style="margin-top: 20px;">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="text" name="name" placeholder="Your Name" required style="padding: 10px; width: 100%; margin-bottom: 10px;">
+    <input type="email" name="email" placeholder="Your Email" required style="padding: 10px; width: 100%; margin-bottom: 10px;">
+    <textarea name="message" rows="4" placeholder="Your Message" required style="padding: 10px; width: 100%; margin-bottom: 10px;"></textarea>
+    <button type="submit" style="padding: 10px 20px; background: #00ffcc; border: none; color: #000; font-weight: bold; cursor: pointer;">
+      Send Message
+    </button>
+  </form>
+</section>
+
+<!-- Footer -->
+<footer data-aos="fade-up">
+  Designed by Sumit Maurya 👨‍💻 | Raghu Kul Academy, Sonbhadra © 2025
+</footer>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 1000 });
+
+  const images = [
+    "https://assets.onecompiler.app/43m8dvjjn/43mhe7aua/1000042402.jpg",
+    "https://assets.onecompiler.app/43m8dvjjn/43msuhy5u/1000042653.jpg",
+    "https://assets.onecompiler.app/43m8dvjjn/43msuhy5u/1000042654.png"
+  ];
+  let index = 0;
+  setInterval(() => {
+    index = (index + 1) % images.length;
+    document.getElementById("slideshow").src = images[index];
+  }, 2000);
+
+  const typeText = [
+    "👋 Hi, I'm Sumit Maurya.",
+    "💡 Passionate Web Developer.",
+    "🎯 I love HTML, CSS, JS.",
+    "📍 From Raghu Kul Academy."
+  ];
+  let tIndex = 0, cIndex = 0;
+  const typewriter = document.getElementById("typewriter");
+  function typeEffect() {
+    if (cIndex < typeText[tIndex].length) {
+      typewriter.innerHTML += typeText[tIndex].charAt(cIndex);
+      cIndex++;
+      setTimeout(typeEffect, 60);
+    } else {
+      setTimeout(() => {
+        typewriter.innerHTML = "";
+        cIndex = 0;
+        tIndex = (tIndex + 1) % typeText.length;
+        typeEffect();
+      }, 2000);
+    }
+  }
+  typeEffect();
+
+  function toggleMenu() {
+    document.getElementById('nav').classList.toggle('active');
+  }
+</script>
+
+</body>
+</html>
