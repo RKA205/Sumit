@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>⚠️ AI VIRUS DETECTED</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      overflow: hidden;
+      color: #0f0;
+      font-family: monospace;
+      cursor: none;
+    }
+
+    canvas, #static {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 1;
+    }
+
+    #msg {
+      position: absolute;
+      top: 40%;
+      width: 100%;
+      font-size: 2.5rem;
+      text-align: center;
+      color: red;
+      animation: blink 0.5s infinite;
+      z-index: 10;
+    }
+
+    #debug {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      color: red;
+      font-size: 1rem;
+      text-shadow: 0 0 5px red;
+      text-align: center;
+      z-index: 10;
+    }
+
+    #timer {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: red;
+      font-size: 2rem;
+      z-index: 20;
+      text-shadow: 0 0 10px red;
+    }
+
+    .glitch {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255, 0, 0, 0.05);
+      animation: glitchAnim 0.25s infinite;
+      z-index: 5;
+    }
+
+    #static {
+      background: url('https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif') center center / cover no-repeat;
+      opacity: 0.1;
+      pointer-events: none;
+    }
+
+    @keyframes glitchAnim {
+      0% { opacity: 0; transform: scale(1); }
+      50% { opacity: 0.25; transform: scale(1.02); }
+      100% { opacity: 0; transform: scale(1); }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(-3px, 3px); }
+      50% { transform: translate(3px, -3px); }
+      75% { transform: translate(-2px, 2px); }
+    }
+
+    .shake {
+      animation: shake 0.2s infinite;
+    }
+
+    #startPrompt {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.95);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      z-index: 100;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="startPrompt">🖱️ CLICK TO START</div>
+  <canvas id="m"></canvas>
+  <div id="static"></div>
+  <div class="glitch"></div>
+  <div id="msg">⚠️ AI VIRUS OVERRIDING SYSTEM...</div>
+  <div id="debug">[DEBUG MODE INITIATED...]</div>
+  <div id="timer">TIME TO COLLAPSE: <span id="countdown">15</span>s</div>
+
+  <audio id="alertSound" src="https://www.soundjay.com/button/beep-10.wav" preload="auto"></audio>
+  <audio id="glitchSound" src="https://www.soundjay.com/button/beep-01a.wav" preload="auto"></audio>
+  <audio id="staticSound" src="https://www.soundjay.com/misc/sounds/static-noise-1.mp3" preload="auto" loop></audio>
+
+  <script>
+    const startPrompt = document.getElementById("startPrompt");
+    startPrompt.onclick = function() {
+      startPrompt.style.display = 'none';
+      startVirus();
+    };
+
+    function startVirus() {
+      let c = document.getElementById('m'), x = c.getContext('2d');
+      c.width = innerWidth;
+      c.height = innerHeight;
+      let cols = c.width / 20, d = [];
+      for (let i = 0; i < cols; i++) d[i] = 1;
+
+      setInterval(() => {
+        x.fillStyle = 'rgba(0,0,0,0.1)';
+        x.fillRect(0, 0, c.width, c.height);
+        x.fillStyle = '#0F0';
+        x.font = '20px monospace';
+        for (let i = 0; i < d.length; i++) {
+          let t = String.fromCharCode(33 + Math.random() * 94);
+          x.fillText(t, i * 20, d[i] * 20);
+          d[i]++;
+          if (d[i] * 20 > c.height && Math.random() > 0.975) d[i] = 0;
+        }
+      }, 30);
+
+      const debugLog = [
+        ">> Attempting to override BIOS...",
+        ">> Accessing GPU core memory...",
+        ">> Injecting polymorphic AI worm...",
+        ">> Breaking firewall...",
+        ">> Encrypting root directory...",
+        ">> SYSTEM BREACH SUCCESSFUL.",
+        ">> ERROR: USER RESISTANCE DETECTED!",
+        ">> INITIATING SYSTEM SELF-DESTRUCTION!"
+      ];
+
+      let index = 0;
+      const debugEl = document.getElementById('debug');
+      const msgEl = document.getElementById('msg');
+      const alertSound = document.getElementById('alertSound');
+      const glitchSound = document.getElementById('glitchSound');
+      const staticSound = document.getElementById('staticSound');
+      staticSound.play();
+
+      let debugInterval = setInterval(() => {
+        if (index < debugLog.length) {
+          debugEl.innerText = debugLog[index++];
+          alertSound.play();
+          speak(debugLog[index - 1]);
+          document.body.classList.add('shake');
+          setTimeout(() => document.body.classList.remove('shake'), 300);
+        } else {
+          clearInterval(debugInterval);
+        }
+      }, 1000);
+
+      setTimeout(() => {
+        glitchSound.play();
+        msgEl.innerText = '💀 SYSTEM FAILURE: AI HAS TAKEN CONTROL 💀';
+        debugEl.innerText = '[ SYSTEM CRASHED - PRESS POWER BUTTON TO REBOOT MANUALLY ]';
+        document.body.style.background = 'darkred';
+        speak("System failure. AI has taken control.");
+      }, 9000);
+
+      // Timer countdown
+      let timeLeft = 15;
+      const timerEl = document.getElementById('countdown');
+      let timer = setInterval(() => {
+        timeLeft--;
+        timerEl.innerText = timeLeft;
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          timerEl.innerText = "💀";
+          speak("Total system collapse.");
+          setTimeout(() => {
+            document.body.innerHTML = '<h1 style="color:red;text-align:center;margin-top:20%;">💀 SYSTEM SHUTDOWN 💀</h1>';
+            document.body.style.background = 'black';
+          }, 2000);
+        }
+      }, 1000);
+
+      // Fake virus message
+      setTimeout(() => {
+        alert('❌ SYSTEM ERROR 0x0000DEAD: ACCESS DENIED.\nAI PROTOCOL ACTIVE.\nALL USER FUNCTIONS TERMINATED.');
+      }, 11000);
+
+      // Random popups
+      setInterval(() => {
+        if (Math.random() > 0.6) {
+          let w = window.open("", "", "width=200,height=100,top=" + Math.random() * 300 + ",left=" + Math.random() * 300);
+          if (w) {
+            w.document.write("<h1 style='color:red;background:black;font-family:monospace;'>AI CONTROL</h1>");
+          }
+        }
+      }, 2500);
+
+      // Speech function
+      function speak(text) {
+        const synth = window.speechSynthesis;
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.pitch = 0.6;
+        utter.rate = 0.85;
+        utter.volume = 1;
+        utter.lang = "en-US";
+        synth.speak(utter);
+      }
+
+      // Flashing background
+      let bgFlashes = setInterval(() => {
+        document.body.style.background = document.body.style.background === 'darkred' ? '#000' : 'darkred';
+      }, 350);
+      setTimeout(() => clearInterval(bgFlashes), 16000);
+    }
+  </script>
+</body>
+</html>
